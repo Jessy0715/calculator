@@ -1,0 +1,100 @@
+$main-font:Helvetica,Noto Sans TC,Roboto, Arial,sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$text-second-cr: #00C4FF;
+
+
+@mixin link-hover {
+    &:hover, &:focus, &:active {
+        @content;
+    }
+}
+
+
+ul {
+    margin-bottom: 0;
+}
+
+html,body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee;
+    width: 100%;   //內容物畫面置中
+    height: 100vh;  //內容物畫面置中
+}
+
+.cal {
+    width: 350px;
+}
+
+.showArea {
+    display: flex;
+    justify-content: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #041936;
+    padding: 15px 0;
+    font-family: $main-font;
+    &__context {
+        border: 1px solid #041936;
+        width: 90%;
+        &__history {
+            color:$text-second-cr;
+            font-size: 1rem;
+            text-align: right;
+            height: 16px;
+        }
+        &__result {
+            color:#FFF;
+            font-size: 60px;
+            text-align: right;
+            line-height: 1.3;
+            height: 78px;
+        }
+    }
+}
+
+
+// display:grid => https://ballaediworkshop.blogspot.com/2019/10/css-grid-introduction-and-tutorial.html
+// 單位前可以加上 span，意指擴展一條線的距離
+.text-second {
+    color: $text-second-cr;
+}
+.operator {
+    border-radius: 16px;
+    background-color: #041936;
+}
+ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows:65px;
+    padding: 15px;
+    background-color: #062144;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin: 5px;
+        &:nth-last-child(1) {
+            grid-column: span 2 / span 2; //格線 1~3 的距離
+            border-radius: 16px;
+            background: transparent linear-gradient(90deg, $text-second-cr 0%, #6C00FF 100%) 0% 0% no-repeat padding-box;
+        }
+        a {
+            color: #FFF;
+            font-size: 1.5rem;
+            @include link-hover {
+                color: #FFF;
+                text-decoration: none;
+            }
+        }
+    }
+    .offset {
+        text-align: right;
+        width: 100%;
+        padding: 0 25px 0 0;
+    }
+}
