@@ -86,6 +86,7 @@ ul {
         a {
             color: #FFF;
             font-size: 1.5rem;
+            width: 100%;
             @include link-hover {
                 color: #FFF;
                 text-decoration: none;
